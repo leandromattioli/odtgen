@@ -1,0 +1,59 @@
+- name: Standard
+  family: paragraph
+  class: text
+
+- name: Heading
+  family: paragraph
+  parent-style-name: Standard
+  next-style-name: TextBody
+  class: chapter
+  paragraph-properties:
+    fo:margin-top: 0.423cm
+    fo:margin-bottom: 0.212cm
+    style:contextual-spacing: false
+    fo:keep-with-next: always
+  text-properties:
+    style:font-name: "Liberation Sans"
+    fo:font-family: "'Liberation Sans'"
+    fo:font-size: 14pt
+
+- name: TextBody
+  display-name: "Text body"
+  family: paragraph
+  parent-style-name: Standard
+  class: text
+  paragraph-properties:
+    fo:margin-top: 0cm
+    fo:margin-bottom: 0.247cm
+    style:contextual-spacing: false
+    fo:line-height: 115%
+
+- name: Heading1
+  display-name: "Heading 1"
+  family: paragraph
+  parent-style-name: Heading
+  next-style-name: TextBody
+  default-outline-level: 1
+  class: chapter
+  paragraph-properties:
+    fo:margin-top: 0.423cm
+    fo:margin-bottom: 0.212cm
+    style:contextual-spacing: false
+  text-properties:
+    fo:font-size: 18pt
+    fo:font-weight: bold
+
+- name: Heading2
+  display-name: "Heading 2"
+  family: paragraph
+  parent-style-name: Heading
+  next-style-name: TextBody
+  default-outline-level: 1
+  class: chapter
+  paragraph-properties:
+    fo:margin-top: 0.353cm
+    fo:margin-bottom: 0.212cm
+    style:contextual-spacing: false
+  text-properties:
+    fo:font-size: 16pt
+    fo:font-weight: bold

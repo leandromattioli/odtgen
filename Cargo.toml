@@ -1,0 +1,16 @@
+[package]
+name = "odtgen"
+version = "0.1.0"
+edition = "2024"
+description = "Flat ODT writer"
+license = "MIT"
+readme = "README.md"
+keywords = ["odt", "openoffice", "libreoffice", "xml"]
+categories = ["text-processing"]
+
+[dependencies]
+xml = "1.2.1"
+serde_yaml_ng = "0.10.0"
+strum = "0.27.2"
+strum_macros = "0.27.2"
+base64 = "0.22.1"
