@@ -1,4 +1,6 @@
+use std::fs::File;
 use std::io::Write;
+use std::path::PathBuf;
 use crate::container::Container;
 use xml::reader::{EventReader, XmlEvent as REvent, ParserConfig};
 use xml::writer::{EventWriter, XmlEvent as WEvent, EmitterConfig};
@@ -73,6 +75,12 @@ impl Document {
         Ok(())
     }
 
+    pub fn save(&mut self, output: &PathBuf) -> Result<(), String> {
+        let mut file = File::create(output).map_err(|e| e.to_string())?;
+        self.generate_fodt(&mut file)?;
+        Ok(())
+    }
+
     /// Export the document as Flat ODT (single XML)
     pub fn generate_fodt(&mut self, out: &mut dyn Write) -> Result<(), String> {
         let mut reader = EventReader::new_with_config(
@@ -102,14 +110,6 @@ impl Document {
             self.body.add(Paragraph::from_text_and_style("", "Standard"));
         }
         self.body.write_flat_odt_xml(&mut writer).map_err(|e| e.to_string())?;
-
-
-
-        // até BODY
-        /*copy_until_marker(&mut reader, &mut writer, "__BODY__")?;
-        for elem in &self.body {
-            elem.write_xml(&mut writer)?;
-        }*/
 
         // resto do documento
         loop {

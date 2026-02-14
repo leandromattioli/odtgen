@@ -74,6 +74,13 @@ impl TableColumn {
             number_columns_repeated: None
         }
     }
+
+    pub fn new_with_style<T: Into<String>>(style_name: T) -> Self {
+        let mut col = TableColumn::new();
+        col.style_name = Some(style_name.into());
+        col
+    }
+
 }
 
 impl FlatOdtXmlWrite for TableColumn {
@@ -167,6 +174,14 @@ impl TableCell {
             content: Container::new()
         }
     }
+
+    pub fn new_with_style<T: Into<String>>(style_name: T) -> Self {
+        let mut cell = TableCell::new();
+        cell.style_name = Some(style_name.into());
+        cell
+    }
+
+
 }
 
 impl FlatOdtXmlWrite for TableCell {

@@ -4,7 +4,7 @@ use xml::EventWriter;
 use crate::fodt_xml_write::FlatOdtXmlWrite;
 use xml::writer::{XmlEvent as XmlWriterEvent};
 use base64::prelude::*;
-use strum_macros::{AsRefStr, EnumIter, EnumString};
+use strum_macros::{AsRefStr, EnumString};
 
 pub struct Image {
     pub path: PathBuf,
