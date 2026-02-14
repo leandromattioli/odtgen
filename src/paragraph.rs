@@ -20,10 +20,16 @@ impl Paragraph {
     }
 
     /// Helper to create a simple paragraph with some text and a given style.
-    pub fn from_text_and_style<T: Into<String>>(text: T, style_name: T) -> Self {
+    pub fn from_text_and_style<T: Into<String>, U: Into<String>>(text: T, style_name: U) -> Self {
         let mut par = Paragraph::new();
         par.content.add(Text {text: text.into()});
         par.style_name = Some(style_name.into());
+        par
+    }
+
+    pub fn from_text<T: Into<String>>(text: T) -> Self {
+        let mut par = Paragraph::new();
+        par.content.add(Text {text: text.into()});
         par
     }
 }
@@ -39,7 +45,7 @@ impl FlatOdtXmlWrite for Paragraph {
 
     fn optional_string_attributes(&self) -> Vec<(&'static str, Option<&str>)> {
         vec![
-            ("text:style_name", self.style_name.as_deref())
+            ("text:style-name", self.style_name.as_deref())
         ]
     }
 }

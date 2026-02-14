@@ -4,7 +4,7 @@ use xml::writer::{XmlEvent as XmlWriterEvent};
 use crate::fodt_xml_write::FlatOdtXmlWrite;
 
 pub struct Text {
-    pub(crate) text: String
+    pub text: String
 }
 
 impl FlatOdtXmlWrite for Text {

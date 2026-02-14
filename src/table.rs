@@ -36,9 +36,6 @@ impl FlatOdtXmlWrite for Table {
         let mut start = XmlWriterEvent::start_element("table:table")
             .attr("table:name", &self.name);
         start = self.add_optional_string_attributes(start);
-        if let Some(ref style_name) = self.style_name {
-            start = start.attr("table:style-name", style_name.as_str());
-        }
         writer.write(start)?;
         //Column specs
         for column in &self.columns {
