@@ -24,7 +24,7 @@ use serde_yaml_ng::Sequence;
 use serde_yaml_ng::Value;
 use strum::IntoEnumIterator;
 use crate::stylesheet::Stylesheet;
-use crate::style::{Style, StyleFamily, StyleItem, StylePropertyGroup, TabStop};
+use crate::style::{Style, StyleFamily, StyleItem, StylePropertyGroup, TabStopSpec};
 
 pub struct StylesheetParser {
 
@@ -107,7 +107,7 @@ impl StylesheetParser {
                 Value::Mapping(mapping) => {
                     let position = Self::yaml_required_string(mapping, "position");
                     let type_ = Self::yaml_optional_string(mapping, "type");
-                    let tab_stop = TabStop {
+                    let tab_stop = TabStopSpec {
                         position,
                         type_,
                     };

@@ -59,6 +59,22 @@ impl FlatOdtXmlWrite for Style {
                 start = start.attr(key.as_str(), value.as_str());
             }
             writer.write(start)?;
+            //Tab stops
+            if ! &style_item.tab_stops.is_empty() {
+                start = XmlWriterEvent::start_element("style:tab-stops");
+                writer.write(start)?;
+                for tab in style_item.tab_stops.iter() {
+                    start = XmlWriterEvent::start_element("style:tab-stop");
+                    start = start.attr("style:position", tab.position.as_ref());
+                    if let Some(type_) = &tab.type_ {
+                        start = start.attr("style:type", type_.as_ref());
+                    }
+                    writer.write(start)?;
+                    writer.write(XmlWriterEvent::end_element())?;
+                }
+                writer.write(XmlWriterEvent::end_element())?;
+            }
+
             //Inner children
             writer.write(XmlWriterEvent::end_element())?;
         }
@@ -82,7 +98,7 @@ impl FlatOdtXmlWrite for Style {
 #[derive(Default)]
 pub struct StyleItem {
     simple_attributes: HashMap<String, String>,
-    tab_stops: Vec<TabStop>
+    tab_stops: Vec<TabStopSpec>
 }
 
 impl StyleItem {
@@ -90,12 +106,12 @@ impl StyleItem {
         self.simple_attributes.insert(key.to_string(), value.to_string());
     }
 
-    pub fn add_tab_stop(&mut self, tab_stop: TabStop) {
+    pub fn add_tab_stop(&mut self, tab_stop: TabStopSpec) {
         self.tab_stops.push(tab_stop);
     }
 }
 
-pub struct TabStop {
+pub struct TabStopSpec {
     pub position: String,
     pub type_: Option<String>,
     //pub leader_char: Option<String>,

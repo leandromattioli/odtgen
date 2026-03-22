@@ -48,7 +48,7 @@
   family: paragraph
   parent-style-name: Heading
   next-style-name: TextBody
-  default-outline-level: 1
+  default-outline-level: 2
   class: chapter
   paragraph-properties:
     fo:margin-top: 0.353cm
@@ -56,4 +56,19 @@
     style:contextual-spacing: false
   text-properties:
     fo:font-size: 16pt
+    fo:font-weight: bold
+
+- name: Heading3
+  display-name: "Heading 3"
+  family: paragraph
+  parent-style-name: Heading
+  next-style-name: TextBody
+  default-outline-level: 3
+  class: chapter
+  paragraph-properties:
+    fo:margin-top: 0.353cm
+    fo:margin-bottom: 0.212cm
+    style:contextual-spacing: false
+  text-properties:
+    fo:font-size: 14pt
     fo:font-weight: bold

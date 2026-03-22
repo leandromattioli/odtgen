@@ -8,8 +8,10 @@ pub mod style;
 pub mod table;
 pub mod stylesheet;
 pub mod stylesheet_parser;
-mod image;
-mod text;
+pub mod image;
+pub mod text;
+pub mod text_span;
+pub mod tab;
 
 pub mod prelude {
     pub use crate::document::Document;
