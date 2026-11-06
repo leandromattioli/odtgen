@@ -125,6 +125,12 @@ impl TableRow {
             number_rows_repeated: None,
         }
     }
+    
+    pub fn new_with_style<T: Into<String>>(style_name: T) -> Self {
+        let mut row = TableRow::new();
+        row.style_name = Some(style_name.into());
+        row
+    }
 
     pub fn add_cell(&mut self, cell: TableCell) {
         self.cells.push(cell);

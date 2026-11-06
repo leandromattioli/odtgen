@@ -1,4 +1,3 @@
-use std::borrow::Cow;
 use std::convert::Into;
 use std::io::Write;
 use xml::EventWriter;

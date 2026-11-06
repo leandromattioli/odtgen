@@ -107,9 +107,11 @@ impl StylesheetParser {
                 Value::Mapping(mapping) => {
                     let position = Self::yaml_required_string(mapping, "position");
                     let type_ = Self::yaml_optional_string(mapping, "type");
+                    let leader_char = Self::yaml_optional_string(mapping, "leader-char");
                     let tab_stop = TabStopSpec {
                         position,
                         type_,
+                        leader_char
                     };
                     style_item.add_tab_stop(tab_stop);
                 }

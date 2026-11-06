@@ -69,6 +69,10 @@ impl FlatOdtXmlWrite for Style {
                     if let Some(type_) = &tab.type_ {
                         start = start.attr("style:type", type_.as_ref());
                     }
+                    if let Some(leader_char) = &tab.leader_char {
+                        start = start.attr("style:leader-style", "solid");
+                        start = start.attr("style:leader-text", leader_char.as_ref());
+                    }
                     writer.write(start)?;
                     writer.write(XmlWriterEvent::end_element())?;
                 }
@@ -114,7 +118,7 @@ impl StyleItem {
 pub struct TabStopSpec {
     pub position: String,
     pub type_: Option<String>,
-    //pub leader_char: Option<String>,
+    pub leader_char: Option<String>,
 }
 
 // ======================================================================================
