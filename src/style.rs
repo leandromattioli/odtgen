@@ -101,8 +101,8 @@ impl FlatOdtXmlWrite for Style {
 
 #[derive(Default)]
 pub struct StyleItem {
-    simple_attributes: HashMap<String, String>,
-    tab_stops: Vec<TabStopSpec>
+    pub simple_attributes: HashMap<String, String>,
+    pub tab_stops: Vec<TabStopSpec>
 }
 
 impl StyleItem {

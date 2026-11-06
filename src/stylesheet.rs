@@ -8,7 +8,7 @@ use crate::stylesheet_parser::StylesheetParser;
 const WRITER_STYLES_YAML: &str = include_str!("../assets/writer_default_stylesheet.yaml");
 
 pub struct Stylesheet {
-    styles: HashMap<String, Style>,
+    pub styles: HashMap<String, Style>,
 }
 
 impl Stylesheet {
